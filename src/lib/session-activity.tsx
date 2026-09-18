@@ -23,7 +23,7 @@ type Ctx = {
 // Route splitting can load this module twice, creating two distinct contexts.
 // Keep a single shared instance so the provider always matches the consumers.
 const globalStore = globalThis as unknown as {
-  __sessionActivityContext?: React.Context<Ctx | null>;
+  __sessionActivityContext?: Context<Ctx | null>;
 };
 
 const SessionActivityContext =
