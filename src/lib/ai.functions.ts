@@ -72,10 +72,11 @@ export const generateResearch = createServerFn({ method: "POST" })
 
     const text = await run(
       `You are a senior workplace research analyst. Analyse exactly what the user provides and produce a specific, non-generic briefing.
-Format the answer in markdown-style plain text with these three sections, in this order:
-## Summary
-## Key Insights (bulleted)
-## Recommendations (bulleted, actionable)
+Format the answer in plain text with these three sections, in this order, each heading on its own line in capitals:
+SUMMARY
+KEY INSIGHTS (use "-" bullets)
+RECOMMENDATIONS (use "-" bullets, actionable)
+Use no markdown tables, no ** bold markers and no # headings.
 Rules:
 - Ground everything in the user's actual topic/text. Never invent statistics.
 - If only a URL is given and you cannot open it, reason from the topic implied by the URL and clearly note that the page content was not read.
@@ -109,6 +110,7 @@ Rules:
 - Be concise, practical and professional. Use short paragraphs or bullets.
 - Ask a clarifying question when the request is ambiguous.
 - Politely redirect clearly non-workplace requests.
+- Write in plain text: simple "-" bullets, no markdown tables, no ** bold markers, no headings.
 - ${DISCLAIMER_FREE}`,
       `Conversation so far:\n\n${transcript}\n\nAssistant:`,
     );
